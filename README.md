@@ -57,6 +57,9 @@ In this spirit, a heap-labeled tree is defined to be a binary tree such that
 the key of **each node dominates the keys of its children**. In a min-heap, a node
 dominates its children by having a smaller key than they do, while in a maxheap
 parent nodes dominate by being bigger.
+The heap is a slick data structure that enables
+us to represent binary trees without using any pointers. 
+We store the data as an array of keys, and use the position of the keys to implicity play the role of the pointers.
 
 - Heapsort:
 `O(n * log(n))`

@@ -1,6 +1,6 @@
 pub const PQ_SIZE: usize = 10; // Example size for the queue
 
-pub struct PriorityQueue<T, F>
+pub struct Heap<T, F>
 where
     F: Fn(&T, &T) -> bool,
 {
@@ -9,7 +9,7 @@ where
     cmp: F,                  //C omparator function
 }
 
-impl<T: Default + Copy, F: Fn(&T, &T) -> bool> PriorityQueue<T, F> {
+impl<T: Default + Copy, F: Fn(&T, &T) -> bool> Heap<T, F> {
     // Create a new PriorityQueue
     pub fn new(cmp: F) -> Self {
         Self {
@@ -38,8 +38,8 @@ impl<T: Default + Copy, F: Fn(&T, &T) -> bool> PriorityQueue<T, F> {
         let current_index = pos as usize;
 
         if (self.cmp)(&self.q[current_index], &self.q[parent_index]) {
-            self.q.swap(current_index, pq_parent(pos) as usize);
-            self.bubble_up(pos);
+            self.q.swap(current_index, parent_index);
+            self.bubble_up(parent_index as i32);
         }
     }
 }
