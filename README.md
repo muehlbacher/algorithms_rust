@@ -34,6 +34,17 @@
 
 
 ### Heaps
+          20
+        /    \
+      15      10
+     /  \    /   \
+    8    5  7     3
+   /  \
+  4    2
+
+[20, 15, 10, 8, 5, 7, 3, 4, 2]
+
+
 Heaps are a simple and elegant data structure for efficiently supporting the 
 priority queue operations insert and extract-min. Heaps work by maintaining a
 partial order on the set of elements that is weaker than the sorted order (so it
