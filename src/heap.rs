@@ -38,7 +38,7 @@ impl<T: Default + Copy, F: Fn(&T, &T) -> bool> PriorityQueue<T, F> {
         let current_index = pos as usize;
 
         if (self.cmp)(&self.q[current_index], &self.q[parent_index]) {
-            self.q.swap(current_index, pq_parent(pos as i32) as usize);
+            self.q.swap(current_index, pq_parent(pos) as usize);
             self.bubble_up(pos);
         }
     }
@@ -53,6 +53,6 @@ pub fn pq_parent(n: i32) -> i32 {
 }
 
 // Get the left child index
-pub fn pq_young_child(n: i32) -> i32 {
-    n * 2
-}
+//pub fn pq_young_child(n: i32) -> i32 {
+//    n * 2
+//}
