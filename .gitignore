@@ -1,0 +1,22 @@
+# Compiled output
+/target/
+
+# Rust/Cargo specific
+**/*.rs.bk
+**/*.rs.swp
+
+# Dependencies (will be resolved by Cargo)
+# Cargo.lock (if you're building a library, but keep this if it's a binary project)
+
+# Editor and IDE files
+/.idea/
+/.vscode/
+/*.swp
+/.DS_Store
+
+# Temporary or backup files
+*.log
+*.tmp
+*.bak
+*.swp
+/target
