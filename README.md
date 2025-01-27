@@ -1,7 +1,8 @@
-## Algorithms in Rust
+## Algorithms and Data Structures in Rust
 
 
 ### Data Structures and Operation Complexity:
+
 | **Data Structure**     | **Search**        | **Insert**        | **Delete**        | **Access**       |
 |------------------------|-------------------|-------------------|-------------------|------------------|
 | **Array**              | O(n)              | O(n)              | O(n)              | O(1)             |
@@ -15,15 +16,40 @@
 | **Graph**              | O(V + E)          | O(1)              | O(V + E)          | O(1) (adj list)  |
 | **Trie**               | O(k)              | O(k)              | O(k)   
 
+### Sorting Algorithms
 
-Heap:
-insert(), delete(): `O(log(n))`
-delete(): `O(log(n))`
-getMin(), getMax(): `O(1)`
+| **Sorting Algorithm**      | **Best Case**     | **Average Case**   | **Worst Case**    | **Space Complexity** |
+|----------------------------|-------------------|--------------------|-------------------|----------------------|
+| **Bubble Sort**            | O(n)              | O(n^2)             | O(n^2)            | O(1)                 |
+| **Selection Sort**         | O(n^2)            | O(n^2)             | O(n^2)            | O(1)                 |
+| **Insertion Sort**         | O(n)              | O(n^2)             | O(n^2)            | O(1)                 |
+| **Merge Sort**             | O(n log n)        | O(n log n)         | O(n log n)        | O(n)                 |
+| **Quick Sort**             | O(n log n)        | O(n log n)         | O(n^2)            | O(log n)             |
+| **Heap Sort**              | O(n log n)        | O(n log n)         | O(n log n)        | O(1)                 |
+| **Radix Sort**             | O(nk)             | O(nk)              | O(nk)             | O(n + k)             |
+| **Counting Sort**          | O(n + k)          | O(n + k)           | O(n + k)          | O(k)                 |
+| **Bucket Sort**            | O(n + k)          | O(n^2)             | O(n^2)            | O(n)                 |
+| **Shell Sort**             | O(n log n)        | O(n^3/2)           | O(n^2)            | O(1)                 |
+| **Tim Sort**               | O(n)              | O(n log n)         | O(n log n)        | O(n)                 |
 
 
-# Heapsort:
+### Heaps
+Heaps are a simple and elegant data structure for efficiently supporting the 
+priority queue operations insert and extract-min. Heaps work by maintaining a
+partial order on the set of elements that is weaker than the sorted order (so it
+can be efficient to maintain) yet stronger than random order (so the minimum
+element can be quickly identified).
+
+**Use case**: Heaps are commonly used in implementing priority queues, scheduling algorithms, and in algorithms like heap sort.
+
+In this spirit, a heap-labeled tree is defined to be a binary tree such that
+the key of **each node dominates the keys of its children**. In a min-heap, a node
+dominates its children by having a smaller key than they do, while in a maxheap
+parent nodes dominate by being bigger.
+
+- Heapsort:
 `O(n * log(n))`
-It is basically an implementation of the selection sort using the right data structure.
+It is basically an implementation of the selection sort using the right data structure.  
+
 
 
