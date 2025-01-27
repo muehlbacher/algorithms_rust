@@ -1,18 +1,31 @@
-mod heap; // Import the heap module
+mod heap;
 
 fn main() {
-    // Test the parent function
-    let mut result = heap::pq_parent(1);
-    println!("Parent of 1: {}", result);
-    result = heap::pq_parent(3);
-    println!("Parent of 3: {}", result);
+    // Comparator for max-heap
+    let max_cmp = |a: &i32, b: &i32| a > b;
 
-    // Test the young child function
-    result = heap::pq_young_child(3);
-    println!("Young child of 3: {}", result);
+    let mut max_pq = heap::PriorityQueue::new(max_cmp);
 
-    // Example usage of the PriorityQueue
-    let mut pq: heap::PriorityQueue<i32> = heap::PriorityQueue::new(); // PriorityQueue for integers
-    println!("PriorityQueue initialized with size: {}", pq.q.len());
-    println!("Number of elements: {}", pq.n);
+    // Insert elements into the max-heap
+    max_pq.pq_insert(10);
+    max_pq.pq_insert(20);
+    max_pq.pq_insert(5);
+    max_pq.pq_insert(15);
+
+    // Print the priority queue elements
+    println!("Max-Heap elements: {:?}", &max_pq.q[1..=max_pq.n]);
+
+    // Comparator for min-heap
+    let min_cmp = |a: &i32, b: &i32| a < b;
+
+    let mut min_pq = heap::PriorityQueue::new(min_cmp);
+
+    // Insert elements into the min-heap
+    min_pq.pq_insert(10);
+    min_pq.pq_insert(20);
+    min_pq.pq_insert(5);
+    min_pq.pq_insert(15);
+
+    // Print the priority queue elements
+    println!("Min-Heap elements: {:?}", &min_pq.q[1..=min_pq.n]);
 }
