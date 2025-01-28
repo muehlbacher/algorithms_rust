@@ -27,6 +27,8 @@ fn main() {
     min_pq.pq_insert(20);
     min_pq.pq_insert(5);
     min_pq.pq_insert(15);
+    min_pq.pq_insert(1);
+    min_pq.pq_insert(16);
 
     // Print the priority queue elements
     println!("Min-Heap elements: {:?}", &min_pq.q[1..=min_pq.n]);
