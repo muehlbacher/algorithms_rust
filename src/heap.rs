@@ -1,3 +1,5 @@
+use std::os::raw::c_char;
+
 pub const PQ_SIZE: usize = 10; // Example size for the queue
 
 pub struct Heap<T, F>
@@ -42,6 +44,42 @@ impl<T: Default + Copy, F: Fn(&T, &T) -> bool> Heap<T, F> {
             self.bubble_up(parent_index as i32);
         }
     }
+    pub fn extract_min(&mut self) -> T {
+        let min: T;
+        if self.n <= 0 {
+            println!("Warning: empty priority queue. \n");
+            return self.q[0];
+        } else {
+            min = self.q[1];
+
+            self.q[1] = self.q[self.n];
+            self.n = self.n - 1;
+            self.bubble_down(1);
+        }
+        return min;
+    }
+    pub fn bubble_down(&mut self, pos: i32) {
+        let mut c: usize;
+        let mut i: usize = 0;
+        let mut min_index: usize;
+
+        c = pq_young_child(pos as usize);
+        min_index = pos as usize;
+
+        while i <= 1 {
+            if c + i <= self.n {
+                if (self.cmp)(&self.q[min_index], &self.q[c + i]) {
+                    min_index = c + i;
+                }
+            }
+            i += 1;
+        }
+
+        if min_index != pos as usize {
+            self.q.swap(pos as usize, min_index);
+            self.bubble_down(min_index as i32);
+        }
+    }
 }
 
 // Get the parent index
@@ -52,7 +90,7 @@ pub fn pq_parent(n: i32) -> i32 {
     n / 2
 }
 
-// Get the left child index
-//pub fn pq_young_child(n: i32) -> i32 {
-//    n * 2
-//}
+//Get the left child index
+pub fn pq_young_child(n: usize) -> usize {
+    n * 2
+}
