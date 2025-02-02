@@ -1,5 +1,3 @@
-use std::os::raw::c_char;
-
 pub const PQ_SIZE: usize = 10; // Example size for the queue
 
 pub struct Heap<T, F>
@@ -59,7 +57,7 @@ impl<T: Default + Copy, F: Fn(&T, &T) -> bool> Heap<T, F> {
         return min;
     }
     pub fn bubble_down(&mut self, pos: i32) {
-        let mut c: usize;
+        let c: usize;
         let mut i: usize = 0;
         let mut min_index: usize;
 
