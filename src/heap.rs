@@ -32,7 +32,7 @@ impl<T: Default + Copy, F: Fn(&T, &T) -> bool> Heap<T, F> {
         } else {
             self.n += 1;
             self.q[self.n] = x;
-            self.bubble_up(self.n as i32); // 3
+            self.bubble_up(self.n as i32);
         }
     }
     pub fn bubble_up(&mut self, pos: i32) {
@@ -40,10 +40,8 @@ impl<T: Default + Copy, F: Fn(&T, &T) -> bool> Heap<T, F> {
             return; //at root of heap
         }
 
-        let parent_index = pq_parent(pos) as usize; // 2, 1
-        let current_index = pos as usize; // 3, 2
-                                          // [0, 10, 5] -> [0, 5, 10]
-                                          // [0, 5, 10, 3] -> [0, 5, 3, 10] -> [0, 3, 5, 10] -> done
+        let parent_index = pq_parent(pos) as usize;
+        let current_index = pos as usize;
         if (self.cmp)(&self.q[current_index], &self.q[parent_index]) {
             self.q.swap(current_index, parent_index);
             self.bubble_up(parent_index as i32);
@@ -63,19 +61,17 @@ impl<T: Default + Copy, F: Fn(&T, &T) -> bool> Heap<T, F> {
         }
         return min;
     }
-    //  [0, 16,15,10,20]
     pub fn bubble_down(&mut self, pos: i32) {
         let c: usize;
         let mut i: usize = 0;
         let mut min_index: usize;
 
-        c = pq_young_child(pos as usize); // 2
-        min_index = pos as usize; // 1, 2, 3
+        c = pq_young_child(pos as usize);
+        min_index = pos as usize;
 
         while i <= 1 {
             if c + i <= self.n {
                 if (self.cmp)(&self.q[c + i], &self.q[min_index]) {
-                    // a < b
                     min_index = c + i;
                 }
             }
