@@ -19,6 +19,12 @@ impl<T: Default + Copy, F: Fn(&T, &T) -> bool> Heap<T, F> {
         }
     }
 
+    pub fn make_heap(&mut self, arr: &[T]) {
+        for &item in arr {
+            self.pq_insert(item);
+        }
+    }
+
     // Insert an element into the priority queue
     pub fn pq_insert(&mut self, x: T) {
         if self.n >= PQ_SIZE {
@@ -26,7 +32,7 @@ impl<T: Default + Copy, F: Fn(&T, &T) -> bool> Heap<T, F> {
         } else {
             self.n += 1;
             self.q[self.n] = x;
-            self.bubble_up(self.n as i32);
+            self.bubble_up(self.n as i32); // 3
         }
     }
     pub fn bubble_up(&mut self, pos: i32) {
@@ -34,9 +40,10 @@ impl<T: Default + Copy, F: Fn(&T, &T) -> bool> Heap<T, F> {
             return; //at root of heap
         }
 
-        let parent_index = pq_parent(pos) as usize;
-        let current_index = pos as usize;
-
+        let parent_index = pq_parent(pos) as usize; // 2, 1
+        let current_index = pos as usize; // 3, 2
+                                          // [0, 10, 5] -> [0, 5, 10]
+                                          // [0, 5, 10, 3] -> [0, 5, 3, 10] -> [0, 3, 5, 10] -> done
         if (self.cmp)(&self.q[current_index], &self.q[parent_index]) {
             self.q.swap(current_index, parent_index);
             self.bubble_up(parent_index as i32);
@@ -56,17 +63,19 @@ impl<T: Default + Copy, F: Fn(&T, &T) -> bool> Heap<T, F> {
         }
         return min;
     }
+    //  [0, 16,15,10,20]
     pub fn bubble_down(&mut self, pos: i32) {
         let c: usize;
         let mut i: usize = 0;
         let mut min_index: usize;
 
-        c = pq_young_child(pos as usize);
-        min_index = pos as usize;
+        c = pq_young_child(pos as usize); // 2
+        min_index = pos as usize; // 1, 2, 3
 
         while i <= 1 {
             if c + i <= self.n {
-                if (self.cmp)(&self.q[min_index], &self.q[c + i]) {
+                if (self.cmp)(&self.q[c + i], &self.q[min_index]) {
+                    // a < b
                     min_index = c + i;
                 }
             }
@@ -91,4 +100,16 @@ pub fn pq_parent(n: i32) -> i32 {
 //Get the left child index
 pub fn pq_young_child(n: usize) -> usize {
     n * 2
+}
+
+pub fn heapsort_(arr: &mut [i32]) {
+    let min_cmp = |a: &i32, b: &i32| a < b;
+
+    let mut min_pq = Heap::new(min_cmp);
+
+    min_pq.make_heap(arr);
+
+    for elem in arr.iter_mut() {
+        *elem = min_pq.extract_min()
+    }
 }

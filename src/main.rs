@@ -32,8 +32,13 @@ fn main() {
     println!("Min-Heap elements: {:?}", &min_pq.q[1..=min_pq.n]);
 
     println!("Min element: {}", min_pq.extract_min());
+    println!("Min-Heap elements: {:?}", &min_pq.q[1..=min_pq.n]);
     println!("Min element: {}", min_pq.extract_min());
     println!("Min-Heap elements: {:?}", &min_pq.q[1..=min_pq.n]);
 
+    let mut arr: [i32; 9] = [10, 20, 5, 15, 3, 10, 1, 1, 1];
+
+    heap::heapsort_(&mut arr);
+    println!("{:?}", arr);
     // Print the priority queue elements
 }
