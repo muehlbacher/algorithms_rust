@@ -40,5 +40,5 @@ fn main() {
 
     heap::heapsort_(&mut arr);
     println!("{:?}", arr);
-    // Print the priority queue elements
+    // Print the priority queue element
 }
