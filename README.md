@@ -211,7 +211,7 @@ We store the data as an array of keys, and use the position of the keys to impli
 It is basically an implementation of the selection sort using the right data structure.  
 
 
-Stack
+## Stack
 A stack is an abstract data type, while a linked list is a data structure. A stack can be implemented using a linked list, but they are not the same thing.
 A stack is a LIFO (Last In, First Out) data structure, It supports two main operations:
 - Push: Add an element to the top
@@ -219,7 +219,7 @@ A stack is a LIFO (Last In, First Out) data structure, It supports two main oper
 
 A stack does not specify how it is implemented (array or linked list); it just defines behavior.
 
-## Stack Comparison: Linked List vs. Array (Vec)
+### Stack Comparison: Linked List vs. Array (Vec)
 
 <table>
   <tr>
@@ -250,11 +250,11 @@ A stack does not specify how it is implemented (array or linked list); it just d
 </table>
 
 
-ADT:
+## ADT:
 An abstract data type defines a set of operations and behavior without specifying how they are implemented.
 -> an ADT defines what a data structure does, not how it does it.
 
-## Stack: Abstract Data Type vs. Data Structure
+### Stack: Abstract Data Type vs. Data Structure
 
 <table>
   <tr>
