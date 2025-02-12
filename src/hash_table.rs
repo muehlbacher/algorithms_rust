@@ -64,7 +64,7 @@ impl<K: Hash + Eq + Clone, V: Clone> HashTable<K, V> {
 mod test {
     use super::HashTable;
     #[test]
-    fn basics() {
+    fn test_hash() {
         let mut table = HashTable::new();
         table.insert("name", "Alice");
         table.insert("age", "30");
