@@ -16,7 +16,6 @@ impl<K: Hash + Eq + Clone, V: Clone> HashTable<K, V> {
         }
     }
 
-    /// .
     fn hash(&self, key: &K) -> usize {
         let mut hasher: DefaultHasher = DefaultHasher::new();
         key.hash(&mut hasher);
@@ -47,16 +46,14 @@ impl<K: Hash + Eq + Clone, V: Clone> HashTable<K, V> {
         None
     }
 
-    /// .sdf
     fn remove(&mut self, key: &K) -> Option<V> {
-        let mut index = self.hash(key);
-        while let Some((existing_key, _)) = &self.buckets[index] {
+        let index: usize = self.hash(key);
+        while let Some((existing_key, value)) = &self.buckets[index] {
             if existing_key == key {
                 let entry = self.buckets[index].take();
                 self.size -= 1;
                 return entry.map(|(_, v)| v);
             }
-            index = (index + 1) % self.buckets.len();
         }
         None
     }
