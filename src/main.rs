@@ -1,3 +1,4 @@
+mod binary_tree;
 mod hash_table;
 mod hash_table_n;
 mod heap;
